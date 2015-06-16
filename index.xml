@@ -1,0 +1,33 @@
+<craft name="circle-layout">
+    <parameter name="radius" type="int" default="30"/>
+    <parameter name="degrees" type="int" default="360"/>
+    <content></content>
+    <script>
+
+        function main(params, scope){
+            var contentSolids = scope.solids
+
+            var tx = 0, ty = 0
+            var r = params.radius, theta = 0
+            
+            var delta = 2 * Math.PI / ((360 / params.degrees) * scope.solids.length)
+            
+            contentSolids.forEach(function(solid){
+                tx = (r * Math.cos(theta)) + solid.layout.size.x
+                ty = (r * Math.sin(theta)) + solid.layout.size.y
+                
+                solid.translateTo({
+                    x: tx,
+                    y: ty, 
+                    z: solid.layout.location.z
+                })
+                
+                theta = theta + delta
+            })
+
+            scope.solids
+
+        }
+
+    </script>
+</craft>
