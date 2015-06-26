@@ -19,7 +19,7 @@
                 solid.translateTo({
                     x: tx,
                     y: ty, 
-                    z: solid.layout.location.z
+                    z: 0
                 })
                 
                 theta = theta + delta
