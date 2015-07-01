@@ -1,5 +1,5 @@
 # circle-layout
-Updated circle layout for CraftML
+Parameterized circle layout for CraftML
 
 ### Install
     $ npm install circle-layout
