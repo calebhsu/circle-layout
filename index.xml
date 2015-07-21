@@ -1,33 +1,32 @@
-<craft name="circle-layout">
+<craft name="circle-layout" grouping="off">
     <parameter name="radius" type="int" default="30"/>
     <parameter name="degrees" type="int" default="360"/>
-    <content></content>
+    <content>
+        <repeat n="10">
+            <cube></cube>
+        </repeat>
+    </content>
     <script>
+        var contentSolids = scope.solids
 
-        function main(params, scope){
-            var contentSolids = scope.solids
-
-            var tx = 0, ty = 0
-            var r = params.radius, theta = 0
+        var tx = 0, ty = 0
+        var r = params.radius, theta = 0
+        
+        var delta = 2 * Math.PI / ((360 / params.degrees) * scope.solids.length)
+        
+        contentSolids.forEach(function(solid){
+            tx = (r * Math.cos(theta)) + solid.layout.size.x
+            ty = (r * Math.sin(theta)) + solid.layout.size.y
             
-            var delta = 2 * Math.PI / ((360 / params.degrees) * scope.solids.length)
-            
-            contentSolids.forEach(function(solid){
-                tx = (r * Math.cos(theta)) + solid.layout.size.x
-                ty = (r * Math.sin(theta)) + solid.layout.size.y
-                
-                solid.translateTo({
-                    x: tx,
-                    y: ty, 
-                    z: 0
-                })
-                
-                theta = theta + delta
+            solid.translateTo({
+                x: tx,
+                y: ty, 
+                z: 0
             })
+            
+            theta = theta + delta
+        })
 
-            scope.solids
-
-        }
-
+        scope.solids
     </script>
 </craft>

@@ -1,8 +1,13 @@
 # circle-layout
 Parameterized circle layout for CraftML
 
-### Install
-    $ npm install circle-layout
+### Usage
+```html
+<craft>
+    <craft name="circle-layout" module="circle-layout"/>
+    <circle-layout></circle-layout>
+</craft>
+```
 
 ### Parameters
 - radius: adjusts radius of item arrangement
@@ -17,7 +22,8 @@ Parameterized circle layout for CraftML
         <repeat n="10">
             <cube></cube>
         </repeat>
-    </circle-layout> 
+    </circle-layout>
+
 </craft>
 ```
 
